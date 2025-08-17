@@ -1,13 +1,20 @@
 package main;
 
-import jakarta.persistence.Embeddable;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
-@Embeddable
+@Entity
 public class Subjects {
 	
+	@Id
+	private int id;
 	private int english;
 	private int maths;
 	private int science;
+	@ManyToOne
+	private Student student;
+	
 	public int getEnglish() {
 		return english;
 	}
@@ -26,8 +33,20 @@ public class Subjects {
 	public void setScience(int science) {
 		this.science = science;
 	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public Student getStudent() {
+		return student;
+	}
+	public void setStudent(Student student) {
+		this.student = student;
+	}
 	@Override
 	public String toString() {
-		return "Subjects [english=" + english + ", maths=" + maths + ", science=" + science + "]";
+		return "Subjects [id=" + id + ", english=" + english + ", maths=" + maths + ", science=" + science + "]";
 	}
 }

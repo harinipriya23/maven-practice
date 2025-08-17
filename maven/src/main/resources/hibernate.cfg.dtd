@@ -1,4 +1,0 @@
-<!ELEMENT hibernate-configuration (session-factory)>
-<!ELEMENT session-factory (#PCDATA|property)*>
-<!ELEMENT property (#PCDATA)>
-<!ATTLIST property name NMTOKEN #REQUIRED>

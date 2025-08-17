@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-configuration SYSTEM "hibernate.cfg.dtd">
+<?xml-model href="hibernate.cfg.xsd"?>
 <hibernate-configuration>
    <session-factory>
        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
@@ -7,7 +7,7 @@
        <property name="hibernate.connection.username">postgres</property>
        <property name="hibernate.connection.password">200903</property>
       
-       <property name="hibernate.hbm2ddl.auto">update</property>
+       <property name="hibernate.hbm2ddl.auto">create</property>
        
        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
        <property name="hibernate.show_sql">true</property>

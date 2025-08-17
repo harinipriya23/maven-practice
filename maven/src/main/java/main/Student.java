@@ -1,7 +1,10 @@
 package main;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Student {
@@ -9,7 +12,8 @@ public class Student {
 	@Id
 	private int id;
 	private String name;
-	private Subjects subject;
+	@OneToMany(mappedBy = "student")
+	private List<Subjects> subjects;
 	
 	public int getId() {
 		return id;
@@ -23,14 +27,14 @@ public class Student {
 	public void setName(String nameString) {
 		this.name = nameString;
 	}
-	public Subjects getSubject() {
-		return subject;
+	public List<Subjects> getSubjects() {
+		return subjects;
 	}
-	public void setSubject(Subjects subject) {
-		this.subject = subject;
+	public void setSubjects(List<Subjects> subjects) {
+		this.subjects = subjects;
 	}
 	@Override
 	public String toString() {
-		return "Student [id=" + id + ", name=" + name + ", subject=" + subject + "]";
-	}
+		return "Student [id=" + id + ", name=" + name + ", subjects=" + subjects + "]";
+	}	
 }
