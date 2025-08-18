@@ -1,9 +1,12 @@
 package laptopDB;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 public class LpMain {
 
@@ -18,36 +21,15 @@ public class LpMain {
 
 		Transaction transaction = session.beginTransaction();
 
-		Laptop l1 = new Laptop();
-		l1.setId(1);
-		l1.setBrand("Dell");
-		l1.setModel("XPS 13 Plus");
-		l1.setRam(16);
+		String HQL = "from Laptop where ram = ?1";
 
-		Laptop l2 = new Laptop();
-		l2.setId(2);
-		l2.setBrand("Apple");
-		l2.setModel("MacBook Air M2");
-		l2.setRam(8);
-
-		Laptop l3 = new Laptop();
-		l3.setId(3);
-		l3.setBrand("HP");
-		l3.setModel("Spectre x360 14");
-		l3.setRam(16);
-
-		Laptop l4 = new Laptop();
-		l4.setId(4);
-		l4.setBrand("Microsoft");
-		l4.setModel("Surface Laptop 5");
-		l4.setRam(16);
+		Query query = session.createQuery(HQL);
+		query.setParameter(1,8);
+		List<Laptop> res = query.getResultList();
 		
-//		session.persist(l1);
-//		session.persist(l2);
-		session.persist(l4);
 
 		transaction.commit();
-
+		System.out.println(res);
 		session.close();
 		factory.close();
 	}
