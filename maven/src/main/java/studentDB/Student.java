@@ -1,10 +1,10 @@
-package main;
+package studentDB;
 
 import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Student {
@@ -12,7 +12,7 @@ public class Student {
 	@Id
 	private int id;
 	private String name;
-	@OneToMany(mappedBy = "student")
+	@ManyToMany
 	private List<Subjects> subjects;
 	
 	public int getId() {

@@ -1,8 +1,10 @@
-package main;
+package studentDB;
+
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Subjects {
@@ -12,8 +14,8 @@ public class Subjects {
 	private int english;
 	private int maths;
 	private int science;
-	@ManyToOne
-	private Student student;
+	@ManyToMany(mappedBy = "subjects")
+	private List<Student> student;
 	
 	public int getEnglish() {
 		return english;
@@ -39,10 +41,11 @@ public class Subjects {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Student getStudent() {
+
+	public List<Student> getStudent() {
 		return student;
 	}
-	public void setStudent(Student student) {
+	public void setStudent(List<Student> student) {
 		this.student = student;
 	}
 	@Override
